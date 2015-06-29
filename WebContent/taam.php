@@ -31,6 +31,7 @@ function body() {
 		class="bigbutton"> Repository </a>
 </article>
 <article>
+	<h2>Downloads</h2>
 	<table>
 		<?php
 
@@ -47,7 +48,7 @@ function body() {
 			<td>
 			<?php
 			foreach ( $rel->assets as $asset ) {
-				echo "<a href=\"$asset->browser_download_url\">$asset->name</a><br />";
+				echo "<a href=\"$asset->browser_download_url\">⇩ $asset->name</a><br />";
 				$size = get_size_display($asset->size);
 				
 				echo "<span class=\"smallgrey\">Size: $size DL: $asset->download_count</span><br />";
@@ -65,6 +66,9 @@ function body() {
 		</tr>
 	<?php } ?>
 	</table>
+</article>
+<article>
+	<h2>Media</h2>
 </article>
 <?php
 }
