@@ -19,7 +19,6 @@
 	var locations = {
 		"io" : "cd /io",
 		"taam" : "cd /taam",
-		"github" : "wget \"https://github.com/Team-IO\"",
 	}
 
 	function load() {
@@ -28,11 +27,20 @@
 		}
 	}
 	
-	function link(key) {
+	function linkByKey(key) {
 		var cmd = locations[key];
+		link(cmd);
+	}
+	
+	function linkByTag(tag) {
+		var cmd = "wget \"" + tag.href + "\"";
+		link(cmd);
+	}
+	
+	function link(text) {
 		document.getElementById("blink").style.display = "none";
 		var hidden = document.getElementById("hidden");
-		hidden.innerHTML = cmd;
+		hidden.innerHTML = text;
 		hidden.style.display = "inline";
 	}
 
@@ -63,21 +71,21 @@
 			Team I/O
 		</div>
 		<div id="links">
-			<a href="#" onmouseenter="link('io');" onmouseout="unlink();">I/O</a>
-			<a href="#" onmouseenter="link('taam');" onmouseout="unlink();">Taam</a>
-			<a href="#" onmouseenter="link('github');" onmouseout="unlink();">GitHub</a>
-			<a href="#" onmouseenter="link('youtube');" onmouseout="unlink();">YouTube</a>
+			<a href="#" onmouseenter="linkByKey('io');" onmouseout="unlink();">I/O</a>
+			<a href="#" onmouseenter="linkByKey('taam');" onmouseout="unlink();">Taam</a>
+			<a href="https://github.com/Team-IO" onmouseenter="linkByTag(this);" onmouseout="unlink();">GitHub</a>
+			<a href="#" onmouseenter="link();" onmouseout="unlink();">YouTube</a>
 		</div>
 	</div>
 	<div id="content">
 		<article>
 			<h1>We are Team I/O</h1>
-			<a href="#" onclick="hide('founderio'); show('Xanderio112');"
+			<a href="#" onclick="hide('founderio'); show('Xanderio112'); return false;"
 				onmouseenter="hide('founderio'); show('Xanderio112');">
 				<img src="https://avatars2.githubusercontent.com/u/6298052?v=3&s=180"
 				alt="Xanderio112" width="90" height="90" />
 			</a>
-			<a href="#" onclick="hide('Xanderio112'); show('founderio');"
+			<a href="#" onclick="hide('Xanderio112'); show('founderio'); return false;"
 				onmouseenter="hide('Xanderio112'); show('founderio');">
 				<img src="https://avatars2.githubusercontent.com/u/6136865?v=3&s=180"
 				alt="founderio" width="90" height="90" />
@@ -86,9 +94,9 @@
 				<div id="Xanderio112" class="cv" style="display: none">
 					<h2>Xanderio112</h2>
 					<span class="io_links">
-						<a href="https://github.com/Xander112"><img
+						<a href="https://github.com/Xander112" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/GitHub-Mark.png" alt="GitHub" width="32" height="32" /></a>
-						<a href="https://twitter.com/AlexanderSieg"><img
+						<a href="https://twitter.com/AlexanderSieg" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/TwitterLogo.png" alt="Twitter" width="32" height="32" /></a>
 					</span>
 					<div class="io_tasks">Recipe Guru, Tweak Pro, Modding
@@ -99,9 +107,9 @@
 					
 					<h2>founderio</h2>
 					<span class="io_links">
-						<a href="https://github.com/founderio/"><img
+						<a href="https://github.com/founderio/" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/GitHub-Mark.png" alt="GitHub" width="32" height="32" /></a>
-						<a href="https://twitter.com/founderio_dhx"><img
+						<a href="https://twitter.com/founderio_dhx" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/TwitterLogo.png" alt="Twitter" width="32" height="32" /></a>
 					</span>
 					<div class="io_tasks">Art Guy, Code Monkey, Technical
