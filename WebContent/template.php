@@ -75,7 +75,7 @@
 			<a href="taam.php" onmouseenter="linkByKey('taam');" onmouseout="unlink();">Taam</a>
 			<a href="https://github.com/Team-IO" onmouseenter="linkByTag(this);" onmouseout="unlink();">GitHub</a>
 			<a href="https://twitter.com/Team_IO_net" onmouseenter="linkByTag(this);" onmouseout="unlink();">Twitter</a>
-			<a href="#" onmouseenter="link();" onmouseout="unlink();">YouTube</a>
+			<a href="https://www.youtube.com/channel/UCF-9Bc50BpD1tdHHZYYbGkA" onmouseenter="linkByTag(this);" onmouseout="unlink();">YouTube</a>
 		</div>
 	</div>
 	<div id="content">
