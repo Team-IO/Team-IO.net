@@ -35,14 +35,19 @@ function body() {
 	<table>
 		<?php
 
-		$cache = new CacheControl('taam_releases', '/repos/founderio/edrouteplanner/releases');
+		$cache = new CacheControl('taam_releases', '/repos/Team-IO/taam/releases');
 		$releases = $cache->content;
 		
 		foreach ( $releases as $rel ) {
-			$prerelease = !$rel->prerelease;
-			$split = split('-', 'taam-1.7.10-'.$rel->name);
-			$mc_ver = $split[1];
-			$mod_ver = $split[2];
+			$prerelease = $rel->prerelease;
+			$split = split('-', $rel->name);
+			if(count($split) >= 2) {
+				$mc_ver = $split[1];
+				$mod_ver = $split[2];
+			} else {
+				$mc_ver = 'N/A';
+				$mod_ver = 'N/A';
+			}
 		?>
 		<tr class="release<?php if($prerelease) { echo ' beta'; }?>">
 			<td>
