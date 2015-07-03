@@ -31,6 +31,45 @@ function body() {
 		class="bigbutton"> Repository </a>
 </article>
 <article>
+	<h2>Milestones</h2>
+	
+	<?php
+
+		function echo_milestone($mile) {
+			echo "<a href=\"$mile->html_url\" class=\"milestone bigbutton\"><span class=\"ms_name\">$mile->title<span>";
+			echo '<span class="progress_parent"><span class="progress_bar"';
+			$progress = 0;
+			$total_issues = $mile->closed_issues + $mile->open_issues;
+			if($total_issues > 0) {
+				$progress = $mile->closed_issues / $total_issues * 100;
+			}
+			echo " style=\"width: $progress%\"></span></span>";
+			echo "<span class=\"ms_stats\">Open Issues: $mile->open_issues Closed Issues: $mile->closed_issues<span></a> ";
+		}
+	
+	
+		$cache = new CacheControl('taam_milestones', '/repos/Team-IO/taam/milestones');
+		$milestones = $cache->content;
+
+		echo '<h3>Versions:</h3>';
+		
+		foreach ( $milestones as $mile ) {
+			if(0 === strpos($mile->title, 'Version')) {
+				echo_milestone($mile);
+			}
+		}
+
+		echo '<h3>Implementation Phases:</h3>(planned features, not in current version)<br />';
+		
+		foreach ( $milestones as $mile ) {
+			if(0 !== strpos($mile->title, 'Version')) {
+				echo_milestone($mile);
+			}
+		}
+		
+		?>
+</article>
+<article>
 	<h2>Downloads</h2>
 	<table>
 		<?php

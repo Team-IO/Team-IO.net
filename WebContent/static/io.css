@@ -2,6 +2,7 @@
 
 body {
 	background-color: #0D0D0D;
+	font-size: 16px;
 }
 
 h1, h2, h3, body {
@@ -157,6 +158,7 @@ article {
 	font-size: 12px;
 }
 
+.milestone,
 .bigbutton {
 	display: inline-block;
 	padding: 30px;
@@ -175,6 +177,31 @@ article {
 
 .bigbutton:ACTIVE {
 	background-color: rgba(200, 200, 200, 0.3);
+}
+
+.progress_parent {
+	display: block;
+	background-color: rgba(200, 200, 200, 0.9);
+	height: 8px;
+}
+
+.progress_bar {
+	display: block;
+	background-color: rgb(100, 100, 100);
+	height: 8px;
+}
+
+.milestone {
+	width: 300px;
+}
+
+.milestone .ms_name {
+	font-size: 22px;
+}
+
+.milestone .ms_stats {
+	color: grey;
+	font-size: 16px;
 }
 
 tr.release td {
