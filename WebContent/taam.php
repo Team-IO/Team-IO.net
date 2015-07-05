@@ -36,7 +36,7 @@ function body() {
 	<?php
 
 		function echo_milestone($mile) {
-			echo "<a href=\"$mile->html_url\" class=\"milestone bigbutton\"><span class=\"ms_name\">$mile->title<span>";
+			echo "<a href=\"$mile->html_url\" onmouseenter=\"linkByTag(this);\" onmouseout=\"unlink();\" class=\"milestone bigbutton\"><span class=\"ms_name\">$mile->title<span>";
 			echo '<span class="progress_parent"><span class="progress_bar"';
 			$progress = 0;
 			$total_issues = $mile->closed_issues + $mile->open_issues;

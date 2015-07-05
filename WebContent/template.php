@@ -5,9 +5,9 @@
 <title><?php echo title(); ?></title>
 <link rel="stylesheet" type="text/css" href="static/io.css" />
 <link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Source+Code+Pro:700" />
+	href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700" />
 <link rel="stylesheet" type="text/css"
-	href="http://fonts.googleapis.com/css?family=Titillium+Web" />
+	href="https://fonts.googleapis.com/css?family=Titillium+Web" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
