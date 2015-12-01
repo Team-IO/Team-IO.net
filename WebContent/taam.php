@@ -79,13 +79,13 @@ function body() {
 		
 		foreach ( $releases as $rel ) {
 			$prerelease = $rel->prerelease;
-			$split = split('-', $rel->name);
+			$split = split(" for ", $rel->name);
 			if(count($split) >= 2) {
+				$mod_ver = $split[0];
 				$mc_ver = $split[1];
-				$mod_ver = $split[2];
 			} else {
-				$mc_ver = 'N/A';
 				$mod_ver = 'N/A';
+				$mc_ver = 'N/A';
 			}
 		?>
 		<tr class="release<?php if($prerelease) { echo ' beta'; }?>">
@@ -101,7 +101,13 @@ function body() {
 			</td>
 			<?php
 				echo "<td>$mod_ver";
-				if($prerelease) { echo '<br />(beta)'; }
+				if($prerelease) {
+					if(startsWith($mod_ver, '0') || endsWith($mod_ver, 'a')) {
+						echo '<br />(alpha)';
+					} else {
+						echo '<br />(beta)';
+					}
+				}
 				echo "</td><td>$mc_ver</td>";
 			?>
 			<td>
