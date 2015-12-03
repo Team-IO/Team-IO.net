@@ -29,6 +29,9 @@ function body() {
 	<a href="https://github.com/Team-IO/taam"
 		onmouseenter="linkByTag(this);" onmouseout="unlink();"
 		class="bigbutton"> Repository </a>
+	<a href="http://minecraft.curseforge.com/projects/taam"
+		onmouseenter="linkByTag(this);" onmouseout="unlink();"
+		class="bigbutton"> CurseForge </a>
 </article>
 <article>
 	<h2>Milestones</h2>
