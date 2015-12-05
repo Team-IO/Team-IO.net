@@ -53,7 +53,7 @@ function body() {
 					
 					<h2>founderio</h2>
 					<span class="io_links">
-						<a href="https://github.com/founderio/" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
+						<a href="https://github.com/founderio" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/GitHub-Mark.png" alt="GitHub" width="32" height="32" /></a>
 						<a href="https://twitter.com/founderio_dhx" onmouseenter="linkByTag(this);" onmouseout="unlink();"><img
 							src="static/TwitterLogo.png" alt="Twitter" width="32" height="32" /></a>
