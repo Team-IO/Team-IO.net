@@ -8,7 +8,7 @@
 	href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700" />
 <link rel="stylesheet" type="text/css"
 	href="https://fonts.googleapis.com/css?family=Titillium+Web" />
-
+<?php headerContent(); ?>
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />

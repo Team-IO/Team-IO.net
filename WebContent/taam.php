@@ -4,6 +4,20 @@ require_once 'lib/util.php';
 function title() {
 	return 'Taam - Team I/O';
 }
+
+function headerContent() {
+?>
+<meta name="description" content="Taam - Tech and Accessory Mod" />
+<meta name="keywords" content="Taam,Tech and Accessory Mod,Minecraft,GitHub,CurseForge" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@Team_IO_net" />
+<meta name="twitter:title" content="Team I/O: Taam" />
+<meta name="twitter:description" content="Tech and Accessory Mod" />
+<meta name="twitter:image" content="https://team-io.net/static/logo_100dpi_square_blue.png"/>
+<?php
+}
+
 function body() {
 	?>
 <article>
