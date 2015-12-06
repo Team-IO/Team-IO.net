@@ -85,6 +85,8 @@ function body() {
 		}
 		
 		?>
+		<h3>Current Build Status:</h3>
+		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg" alt="Build Status" /></a>
 </article>
 <article>
 	<h2>Downloads</h2>
