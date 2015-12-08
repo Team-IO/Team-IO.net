@@ -21,6 +21,12 @@ function headerContent() {
 function body() {
 	?>
 			<article>
+			<h1>Want to support us?</h1>
+			<p>
+			Check our <a href="https://www.patreon.com/Team_IO?ty=h">Patreon</a> page!
+			</p>
+			</article>
+			<article>
 			<h1>We are Team I/O</h1>
 			<div class="io_float_right">
 				<a class="twitter-timeline"  href="https://twitter.com/Team_IO_net" data-widget-id="673174316813537280">Tweets von @Team_IO_net </a>

@@ -21,6 +21,12 @@ function headerContent() {
 function body() {
 	?>
 <article>
+		<h1>Want to support this mod?</h1>
+		<p>
+		Check our <a href="https://www.patreon.com/Team_IO?ty=h">Patreon</a> page!
+		</p>
+</article>
+<article>
 	<h1>Taam</h1>
 	<p>Presenting: Taam Industries latest collection of gadgets and tools
 		for the heavy industry. Join the line of our valued customers and
