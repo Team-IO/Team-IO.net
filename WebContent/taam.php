@@ -92,7 +92,10 @@ function body() {
 		
 		?>
 		<h3>Current Build Status:</h3>
-		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg" alt="Build Status" /></a>
+		<h4>Master (1.7.10):</h4>
+		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg?branch=master" alt="Build Status" /></a>
+		<h4>1.8:</h4>
+		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg?branch=1.8" alt="Build Status" /></a>
 </article>
 <article>
 	<h2>Downloads</h2>
