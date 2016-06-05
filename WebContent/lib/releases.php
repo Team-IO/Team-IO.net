@@ -2,6 +2,11 @@
 
 require_once 'util.php';
 
+class CacheValue {
+	public $data;
+	public $modified;
+}
+
 class CachedVersionInfo {
 
 	public $mc_version;
@@ -23,17 +28,18 @@ class CachedVersion {
 	public $assets;
 }
 
+const cache_time = 300;
 
-function getReleases($repoName) {
+function getReleases($repoName, &$modified) {
 	$cache_id_releases = "{$repoName}_releases";
 	$cache_id_versions = "{$repoName}_versions";
 	$repo_url = "/repos/Team-IO/$repoName/releases";
 	
 	// Fetch cached info
-	$mc_versions = apcu_fetch($cache_id_versions);
+	$cache = apcu_fetch($cache_id_versions, $success);
 	
 	// Rebuild cache if there is no info available
-	if($mc_versions == null || isset($_GET['nocache'])) {
+	if(!$success || isset($_GET['nocache'])) {
 		// Get potentially cached release info
 		$cache = new CacheControl($cache_id_releases, $repo_url);
 		$releases = $cache->content;
@@ -88,19 +94,25 @@ function getReleases($repoName) {
 			$changelog = preg_replace('/!\\[[a-zA-Z0-9 ._\-\/?&%]*\\]\\((https?:\/\/[[a-zA-Z0-9._\-\/?&%]+)\\)/', '$1', $changelog);//
 			$versionInfoForMCVersion->changelog[$mod_ver] = $changelog;
 		}
-		apcu_store($cache_id_versions, $mc_versions, 300);
+		$cache = new CacheValue();
+		$cache->data = $mc_versions;
+		$cache->modified = gmdate('D, d M Y H:i:s').' GMT';
+		
+		apcu_store($cache_id_versions, $mc_versions, cache_time);
 	}
+	$mc_versions = $cache->data;
+	$modified = $cache->modified;
 	return $mc_versions;
 }
 
-function getReleasesPromoFile($repoName) {
+function getReleasesPromoFile($repoName, &$modified) {
 	$cache_id_versions_json = "{$repoName}_versions_json";
 	
 	// Fetch cached info
-	$promoFile = apcu_fetch($cache_id_versions_json);
+	$cache = apcu_fetch($cache_id_versions_json, $success);
 	
-	if(!$promoFile || isset($_GET['nocache'])) {
-		$mc_versions = getReleases($repoName);
+	if(!$success || isset($_GET['nocache'])) {
+		$mc_versions = getReleases($repoName, $releases_modified);
 		
 		$promoFile = array();
 		
@@ -113,7 +125,13 @@ function getReleasesPromoFile($repoName) {
 		
 			$promoFile[$version->mc_version] = $version->changelog;
 		}
-		apcu_store($cache_id_versions_json, $promoFile, 300);
+		$cache = new CacheValue();
+		$cache->data = $promoFile;
+		$cache->modified = $releases_modified;
+		
+		apcu_store($cache_id_versions_json, $cache, cache_time);
 	}
+	$promoFile = $cache->data;
+	$modified = $cache->modified;
 	return $promoFile;
 }
