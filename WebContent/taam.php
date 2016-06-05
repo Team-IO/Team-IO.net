@@ -1,5 +1,6 @@
 <?php
 require_once 'lib/util.php';
+require_once 'lib/releases.php';
 
 function title() {
 	return 'Taam - Team I/O';
@@ -54,6 +55,7 @@ function body() {
 		class="bigbutton"> CurseForge </a>
 </article>
 <article>
+	<a id="milestones"></a>
 	<h2>Milestones</h2>
 	
 	<?php
@@ -98,25 +100,18 @@ function body() {
 		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg?branch=1.8" alt="Build Status" /></a>
 </article>
 <article>
+	<a id="downloads"></a>
 	<h2>Downloads</h2>
 	<table>
 		<?php
 
-		$cache = new CacheControl('taam_releases', '/repos/Team-IO/taam/releases');
-		$releases = $cache->content;
+		$mc_versions = getReleases('taam');
 		
-		foreach ( $releases as $rel ) {
-			$prerelease = $rel->prerelease;
-			$split = split(" for ", $rel->name);
-			if(count($split) >= 2) {
-				$mod_ver = $split[0];
-				$mc_ver = $split[1];
-			} else {
-				$mod_ver = 'N/A';
-				$mc_ver = 'N/A';
-			}
+		foreach($mc_versions as $mc_version) {
+			echo "<tr><th>Minecraft $mc_version->mc_version</th></tr>";
+			foreach ( $mc_version->versions as $rel ) {
 		?>
-		<tr class="release<?php if($prerelease) { echo ' beta'; }?>">
+		<tr class="release<?php if($rel->prerelease) { echo ' beta'; }?>">
 			<td>
 			<?php
 			foreach ( $rel->assets as $asset ) {
@@ -128,24 +123,24 @@ function body() {
 			?>
 			</td>
 			<?php
-				echo "<td>$mod_ver";
-				if($prerelease) {
-					if(startsWith($mod_ver, '0') || endsWith($mod_ver, 'a')) {
-						echo '<br />(alpha)';
-					} else {
-						echo '<br />(beta)';
-					}
+				echo "<td>$rel->version";
+				if($rel->prerelease) {
+					echo "<br />($rel->suffix)";
 				}
-				echo "</td><td>$mc_ver</td>";
+				echo "</td>";
 			?>
 			<td>
-			<a href="<?php echo $rel->html_url; ?>">Changelog</a>
+			<a href="<?php echo $rel->changelog_url; ?>">Changelog</a>
 			</td>
 		</tr>
-	<?php } ?>
+	<?php }
+		}
+	?>
 	</table>
+	<a href="https://team-io.net/taam-updates.php">Machine-Readable Version</a>
 </article>
 <article>
+	<a id="media"></a>
 	<h2>Media</h2>
 </article>
 <?php
