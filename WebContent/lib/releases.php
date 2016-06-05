@@ -41,8 +41,8 @@ function getReleases($repoName, &$modified) {
 	// Rebuild cache if there is no info available
 	if(!$success || isset($_GET['nocache'])) {
 		// Get potentially cached release info
-		$cache = new CacheControl($cache_id_releases, $repo_url);
-		$releases = $cache->content;
+		$cached_releases = new CacheControl($cache_id_releases, $repo_url);
+		$releases = $cached_releases->content;
 	
 		$mc_versions = array();
 	
@@ -98,7 +98,7 @@ function getReleases($repoName, &$modified) {
 		$cache->data = $mc_versions;
 		$cache->modified = gmdate('D, d M Y H:i:s').' GMT';
 		
-		apcu_store($cache_id_versions, $mc_versions, cache_time);
+		apcu_store($cache_id_versions, $cache, cache_time);
 	}
 	$mc_versions = $cache->data;
 	$modified = $cache->modified;

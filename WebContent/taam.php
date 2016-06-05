@@ -105,7 +105,7 @@ function body() {
 	<table>
 		<?php
 
-		$mc_versions = getReleases('taam');
+		$mc_versions = getReleases('taam', $modified);
 		
 		foreach($mc_versions as $mc_version) {
 			echo "<tr><th>Minecraft $mc_version->mc_version</th></tr>";
