@@ -33,7 +33,7 @@ function getReleases($repoName) {
 	$mc_versions = apcu_fetch($cache_id_versions);
 	
 	// Rebuild cache if there is no info available
-	if($mc_versions == null) {
+	if($mc_versions == null || isset($_GET['nocache'])) {
 		// Get potentially cached release info
 		$cache = new CacheControl($cache_id_releases, $repo_url);
 		$releases = $cache->content;
@@ -82,7 +82,11 @@ function getReleases($repoName) {
 					$versionInfoForMCVersion->recommended = $mod_ver;
 				}
 			}
-			$versionInfoForMCVersion->changelog[$mod_ver] = $rel->body;
+			// Remove \r from the text, as minecraft does not render that. (GitHub delivers \r\n)
+			$changelog = str_replace("\r", '', $rel->body);
+			// Remove image alt-text & markdown, leaving only the link
+			$changelog = preg_replace('/!\\[[a-zA-Z0-9 ._\-\/?&%]*\\]\\((https?:\/\/[[a-zA-Z0-9._\-\/?&%]+)\\)/', '$1', $changelog);//
+			$versionInfoForMCVersion->changelog[$mod_ver] = $changelog;
 		}
 		apcu_store($cache_id_versions, $mc_versions, 300);
 	}
@@ -95,7 +99,7 @@ function getReleasesPromoFile($repoName) {
 	// Fetch cached info
 	$promoFile = apcu_fetch($cache_id_versions_json);
 	
-	if(!$promoFile) {
+	if(!$promoFile || isset($_GET['nocache'])) {
 		$mc_versions = getReleases($repoName);
 		
 		$promoFile = array();

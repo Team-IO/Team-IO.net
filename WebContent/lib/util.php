@@ -10,7 +10,7 @@ class CacheControl {
 	
 	public function __construct($id, $url) {
 		$this->content = apcu_fetch('cachecontrol_' . $id);
-		if(!$this->content) {
+		if(!$this->content || isset($_GET['nocache'])) {
 			$api = new Github\Api ();
 			$response = $api->get ( $url );
 			$this->content = $api->decode ( $response );
