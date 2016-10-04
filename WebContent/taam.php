@@ -57,7 +57,7 @@ function body() {
 <article>
 	<a id="milestones"></a>
 	<h2>Milestones</h2>
-	
+
 	<?php
 
 		function echo_milestone($mile) {
@@ -71,13 +71,13 @@ function body() {
 			echo " style=\"width: $progress%\"></span></span>";
 			echo "<span class=\"ms_stats\">Open Issues: $mile->open_issues Closed Issues: $mile->closed_issues<span></a> ";
 		}
-	
-	
+
+
 		$cache = new CacheControl('taam_milestones', '/repos/Team-IO/taam/milestones');
 		$milestones = $cache->content;
 
 		echo '<h3>Versions:</h3>';
-		
+
 		foreach ( $milestones as $mile ) {
 			if(0 === strpos($mile->title, 'Version')) {
 				echo_milestone($mile);
@@ -85,13 +85,13 @@ function body() {
 		}
 
 		echo '<h3>Implementation Phases:</h3>(planned features, not in current version)<br />';
-		
+
 		foreach ( $milestones as $mile ) {
 			if(0 !== strpos($mile->title, 'Version')) {
 				echo_milestone($mile);
 			}
 		}
-		
+
 		?>
 		<h3>Current Build Status:</h3>
 		<h4>Master (1.7.10):</h4>
@@ -106,7 +106,7 @@ function body() {
 		<?php
 
 		$mc_versions = getReleases('taam', $modified);
-		
+
 		foreach($mc_versions as $mc_version) {
 			echo "<tr><th>Minecraft $mc_version->mc_version</th></tr>";
 			foreach ( $mc_version->versions as $rel ) {
@@ -117,7 +117,7 @@ function body() {
 			foreach ( $rel->assets as $asset ) {
 				echo "<a href=\"$asset->browser_download_url\">⇩ $asset->name</a><br />";
 				$size = get_size_display($asset->size);
-				
+
 				echo "<span class=\"smallgrey\">Size: $size DL: $asset->download_count</span><br />";
 			}
 			?>
