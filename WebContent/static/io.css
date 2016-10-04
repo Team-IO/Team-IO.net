@@ -166,6 +166,14 @@ article {
 	font-size: 12px;
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.offset {
+	margin-left: 20px;
+}
+
 .milestone,
 .bigbutton {
 	display: inline-block;
