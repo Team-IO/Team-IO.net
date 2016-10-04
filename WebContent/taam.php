@@ -35,7 +35,9 @@ function body() {
 		conveyor system. Build a production line tailored to your needs. Make
 		your factory safe and sound using our collection of building materials
 		and utilities.</p>
-	<p>Taam is a mod for Minecraft 1.7.10. We add a production line using
+	<p>Taam is a mod for Minecraft 1.9.4 and 1.10.2.<br />
+		The last stable release is for 1.7.10, but the beta releases for 1.9 and 1.10 become more stable with every release.</p>
+	<p>We add a production line using
 		conveyors, machines and appliances, various gadgets, building blocks
 		and tools. And there is more on our todo-list! Check the wiki for more
 		info.</p>
@@ -94,10 +96,20 @@ function body() {
 
 		?>
 		<h3>Current Build Status:</h3>
-		<h4>Master (1.7.10):</h4>
-		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg?branch=master" alt="Build Status" /></a>
-		<h4>1.8:</h4>
-		<a href="https://travis-ci.org/Team-IO/taam"><img src="https://travis-ci.org/Team-IO/taam.svg?branch=1.8" alt="Build Status" /></a>
+		<p>
+			<span class="bold">Master <span class="smallgrey">(1.9.4)</span>:</span>
+			<a href="https://travis-ci.org/Team-IO/taam"><img src="https://img.shields.io/travis/Team-IO/taam/master.svg?maxAge=3600" alt="Build Status" /></a>
+		</p>
+		<p>
+			<span class="bold">Dev Branches:</span>
+			<a href="https://travis-ci.org/Team-IO/taam"><img src="https://img.shields.io/travis/Team-IO/taam/1.10.svg?maxAge=3600&label=1.10.2" alt="Build Status" /></a>
+			<a href="https://travis-ci.org/Team-IO/taam"><img src="https://img.shields.io/travis/Team-IO/taam/1.9.svg?maxAge=3600&label=1.9.4" alt="Build Status" /></a>
+			<a href="https://travis-ci.org/Team-IO/taam"><img src="https://img.shields.io/travis/Team-IO/taam/1.8.svg?maxAge=3600&label=1.8.9%20(Discontinued)" alt="Build Status" /></a>
+			<a href="https://travis-ci.org/Team-IO/taam"><img src="https://img.shields.io/travis/Team-IO/taam/1.7.10.svg?maxAge=3600&label=1.7.10%20(Discontinued)" alt="Build Status" /></a>
+		</p>
+		<p>
+			1.9.4 and 1.10.2 will both be maintained in parallel as long as feasible.
+		</p>
 </article>
 <article>
 	<a id="downloads"></a>
